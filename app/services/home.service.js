@@ -3,7 +3,7 @@ angular.module('myApp.services', [])
 
 Home.$inject = [];
 
-function Home() {
+function Home(socketFactory) {
 
   var players = [{
     id: 1,
