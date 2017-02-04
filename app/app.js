@@ -10,21 +10,22 @@ angular.module('myApp', [
 
 .config(['$locationProvider', '$routeProvider',
 function($locationProvider, $routeProvider) {
-  //$locationProvider.hashPrefix('!');
+
+  $locationProvider.html5Mode(true);
   $routeProvider
-  .when('/home', {
+  .when('/', {
     templateUrl: './templates/home.html',
     controller: 'HomeCtrl'
   });
-  $routeProvider 
+  $routeProvider
   .when('/game', {
     templateUrl: './templates/game.html',
-    controller: 'GameCtrl'
+    //controller: 'GameCtrl'
   });
-  $routeProvider 
+  $routeProvider
   .when('/recap', {
     templateUrl: './templates/recap.html',
-    controller: 'RecapCtrl'
+    //controller: 'RecapCtrl'
   });
-  $routeProvider.otherwise({redirectTo: '/home'});
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);
