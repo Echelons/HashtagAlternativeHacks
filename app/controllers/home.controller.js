@@ -32,4 +32,8 @@ function HomeCtrl($scope, Home) {
     console.log("onMessageArrived:"+message.payloadString);
   }
 
+  $scope.beginGame = function () {
+  	console.log("hello");
+  }
+
 }
