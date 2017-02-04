@@ -16,5 +16,15 @@ function($locationProvider, $routeProvider) {
     templateUrl: './templates/home.html',
     controller: 'HomeCtrl'
   });
+  $routeProvider 
+  .when('/game', {
+    templateUrl: './templates/game.html',
+    controller: 'GameCtrl'
+  });
+  $routeProvider 
+  .when('/recap', {
+    templateUrl: './templates/recap.html',
+    controller: 'RecapCtrl'
+  });
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);
