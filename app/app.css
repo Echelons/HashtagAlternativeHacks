@@ -1,4 +1,10 @@
 /* app css stylesheet */
+@import url(https://fonts.googleapis.com/css?family=Graduate|Open+Sans);
+
+
+h1 {
+	font-family: 'Graduate', cursive;
+}
 
 .menu {
   list-style: none;
@@ -24,7 +30,4 @@
   padding-right: 0.3em;
 }
 
-h1 {
-	font-family: 'Graduate', cursive;
-}
 
