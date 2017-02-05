@@ -1,4 +1,4 @@
-angular.module('myApp.services', [])
+angular.module('myApp.services')
 .factory('Home', Home);
 
 Home.$inject = [];
