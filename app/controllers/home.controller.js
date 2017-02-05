@@ -27,7 +27,7 @@ function HomeCtrl($scope, Home) {
 	// var name = document.getElementById('1234').value;
 	// console.log(name);
  //  }
-  
+
   var startTime;
   var currentTime;
 
