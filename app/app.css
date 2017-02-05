@@ -26,8 +26,16 @@ h1 {
 
 .start-button button {
   border-radius: 0px;
+  border-color: black;
+  background-color: #FFFFFF;
+  border-width: 3px;
   font-family: 'Graduate', cursive !important;
 }
+
+.btn:focus {
+  outline-color: red !important;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
