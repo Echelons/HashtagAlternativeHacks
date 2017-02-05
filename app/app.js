@@ -12,20 +12,20 @@ angular.module('myApp', [
 function($locationProvider, $routeProvider) {
 
   $locationProvider.html5Mode(true);
+
   $routeProvider
   .when('/', {
     templateUrl: './templates/home.html',
     controller: 'HomeCtrl'
-  });
-  $routeProvider
+  })
   .when('/game', {
     templateUrl: './templates/game.html',
-    //controller: 'GameCtrl'
-  });
-  $routeProvider
+    controller: 'GameCtrl'
+  })
   .when('/recap', {
     templateUrl: './templates/recap.html',
     //controller: 'RecapCtrl'
-  });
-  $routeProvider.otherwise({redirectTo: '/'});
+  })
+  .otherwise({ redirectTo: '/' });
+
 }]);
