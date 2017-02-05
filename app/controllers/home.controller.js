@@ -8,5 +8,8 @@ function HomeCtrl($scope, Home) {
 
   $scope.beginGame = function () {
   	console.log("hello");
+  	$('#myModal').modal('hide');
+	$('body').removeClass('modal-open');
+	$('.modal-backdrop').remove();
   }
 }
