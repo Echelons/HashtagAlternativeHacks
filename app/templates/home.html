@@ -16,10 +16,10 @@
 		<h1 class="text-center">Score: <span ng-bind="points"></span></h1>
 	</div>
 	<div class="text-center col-md-2 start-button">
-		<button type="button" class="btn">Start Game</button>
+		<button ng-click="startTimer()" id="#start" type="button" class="btn">Start Game</button>
 	</div>
 	<div class="time col-md-5">
-		<h1 class="text-center">Time:<span>420</span></h1>
+		<h1 class="text-center">Time: <span ng-bind="t"></span></h1>
 	</div>
 </div>
 
@@ -33,14 +33,14 @@
 	    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 	        <g id="Artboard-1">
 	            <polygon id="Board" stroke="#FF0000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF" transform="translate(249.500000, 249.500000) scale(1, -1) translate(-249.500000, -249.500000) " points="249.5 24 475 475 24 475"></polygon>
-	            <g id="Group" transform="translate(90.000000, 52.000000)" fill="#FF0000">
-	                <circle id="cup_6" cx="280" cy="40" r="40"></circle>
-	                <circle id="cup_5" cx="160" cy="40" r="40"></circle>
-	                <circle id="cup_4" cx="40" cy="40" r="40"></circle>
-	                <circle id="cup_3" cx="220" cy="152" r="40"></circle>
-	                <circle id="cup_2" cx="100" cy="152" r="40"></circle>
-	                <circle id="cup_1" cx="160" cy="272" r="40"></circle>
-	            </g>
+	            
+                <circle id="cup_6" fill="#FF0000" cx="370" cy="92" r="40"></circle>
+        		<circle id="cup_5" fill="#FF0000" cx="250" cy="92" r="40"></circle>
+        		<circle id="cup_4" fill="#FF0000" cx="130" cy="92" r="40"></circle>
+        		<circle id="cup_3" fill="#FF0000" cx="310" cy="204" r="40"></circle>
+        		<circle id="cup_2" fill="#FF0000" cx="190" cy="204" r="40"></circle>
+        		<circle id="cup_1" fill="#FF0000" cx="250" cy="324" r="40"></circle>
+	          
 	            <circle id="inner_6" stroke="#909090" fill="#FFFFFF" cx="370.5" cy="92.5" r="29.5"></circle>
 	            <circle id="inner_5" stroke="#909090" fill="#FFFFFF" cx="250.5" cy="92.5" r="29.5"></circle>
 	            <circle id="inner_4" stroke="#909090" fill="#FFFFFF" cx="130.5" cy="92.5" r="29.5"></circle>
@@ -51,7 +51,6 @@
 	    </g>
 	</svg>
 </div>
-
 
 <!-- Modal -->
 
