@@ -30,12 +30,13 @@ function HomeCtrl($scope, Home) {
 
   var startTime;
   var currentTime;
+  var gameTimer;
 
   $scope.t = 0;
 
   $scope.startTimer = function () {
     startTime = moment();
-    window.setInterval(function () {
+    gameTimer = window.setInterval(function () {
       currentTime = moment();
       // currentTime /= 1000;
       // var seconds = Math.round(currentTime % 60);
@@ -44,7 +45,20 @@ function HomeCtrl($scope, Home) {
     }, 1000)
   }
 
+  function score (cup_id) {
+    $(cup_id).attr('fill', '#2AE224');  
+  }
+
   $scope.points = 0;
+
+  function clearCups() {
+    $('#check_1').attr('fill', '#FFFFFF');
+    $('#check_2').attr('fill', '#FFFFFF');
+    $('#check_3').attr('fill', '#FFFFFF');
+    $('#check_4').attr('fill', '#FFFFFF');
+    $('#check_5').attr('fill', '#FFFFFF');
+    $('#check_6').attr('fill', '#FFFFFF');
+  }
 
   client = new Paho.MQTT.Client('m13.cloudmqtt.com', 33244, "web_" + parseInt(Math.random() * 100, 10));
 
@@ -83,11 +97,37 @@ function HomeCtrl($scope, Home) {
       $scope.points = 0;
     } else if (response.message == "score") {
       console.log("Score");
+      switch(response.position) {
+        case 1:
+          score('#check_1');
+          break;
+        case 2: 
+          score('#check_2');
+          break;
+        case 3: 
+          score('#check_3');
+          break;
+        case 4: 
+          score('#check_4');
+          break;
+        case 5: 
+          score('#check_5');
+          break;
+        case 6: 
+          score('#check_6');
+          break;
+        default: 
+          console.log("wtf??");
+      }
       $scope.points += response.points;
       $scope.$apply();
     } else if (response.message == "gamecomplete") {
       console.log("Game Complete");
+      clearCups();
       $scope.points = 0;
+      window.clearInterval(gameTimer);
+      $scope.t = moment(moment().diff(moment())).format("mm:ss");
+      $scope.$apply();
     } else {
 
     }
