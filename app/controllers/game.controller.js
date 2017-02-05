@@ -5,14 +5,23 @@ GameCtrl.$inject = ['$scope'];
 
 function GameCtrl($scope) {
 
-  client = new Paho.MQTT.Client('broker.hivemq.com', Number(8000), "alternativehacks");
+  $scope.points = 0;
+
+  client = new Paho.MQTT.Client('m13.cloudmqtt.com', 33244, "web_" + parseInt(Math.random() * 100, 10));
 
   // set callback handlers
   client.onConnectionLost = onConnectionLost;
   client.onMessageArrived = onMessageArrived;
 
+  var opts = {
+    useSSL: true,
+    userName: "front",
+    password: "qhacks",
+    onSuccess: onConnect
+  };
+
   // connect the client
-  client.connect({ onSuccess: onConnect });
+  client.connect(opts);
 
   function onConnect() {
     console.log("onConnect");
@@ -22,23 +31,26 @@ function GameCtrl($scope) {
   // called when the client loses its connection
   function onConnectionLost(responseObject) {
     console.log("Connection Lost. Reconnecting...");
-    client.connect({ onSuccess: onConnect });
+    client.connect(opts);
   }
 
   // called when a message arrives
   function onMessageArrived(message) {
-    console.log(message.payloadString);
-    //var response = JSON.parse(message.payloadString);
+    var response = JSON.parse(message.payloadString);
     if(response.message == "debug") {
       console.log("Debugging");
     } else if (response.message == "gameready") {
       console.log("Game Ready");
+      $scope.points = 0;
     } else if (response.message == "score") {
-      console.log("Score!");
+      console.log("Score");
+      $scope.points += response.points;
+      $scope.$apply();
     } else if (response.message == "gamecomplete") {
       console.log("Game Complete");
+      $scope.points = 0;
     } else {
-      console.log("Incorrect message format: " + response.message);
+
     }
   };
 
